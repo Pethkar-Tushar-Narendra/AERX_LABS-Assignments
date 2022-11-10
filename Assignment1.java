@@ -1,47 +1,51 @@
-//ASSIGNMENT 2:
-//In an integer array of size 99, numbers are stored ranging from 1-100 with no
-//repetition and array is not sorted. So the numbers range is 1-100 and size of the array
-//is 99 which means the array will not have a number in given range. Find that missing
-//number.
-//
-//Function int Find_Missing_Number(int arrayIn[])
-//
-//CONDITION: Do not sort the array
-//
-//e.g: arrayIn = {1,2,3,4,6,.......100}
-//return value = 5
+package interview.aerx_labs;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class Assignment2 {
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		int[] array = new int[99];
-		int[] array = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100};
-//		0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
+//		Write a function to find the longest common prefix string amongst an array of strings.
+//
+//		return an empty string("") in case there is no common prefix.
+//
+//		Function: String Find_Common_Prefix(List<String> String_List)
+//
+//		e.g: String_List = {"suyash" "sukesh" "sumit" "sunil" "suresh"};
+//		return: "su"
+//
+//		e.g: String_List = {"mahesh" "saqlain" "labeeb" "shashank" "nazif"};
+//		return: ""
 		
-		int result = find_missing_number(array);
-		if(result==-1)System.out.println("All integers from 1 to 100 present");
-		else System.out.println("Missing Integer is "+result);
+
+public class Assignment1 {
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<String>();
+		list.add("mahesh");
+		list.add("saqlain");
+		list.add("suyashs");
+		list.add("suyash");
+		list.add("suyash");
+		list.add("suyash");
+//		System.out.println(list);
+		String result = find_comman_prefiix(list);
+		if(result=="")System.out.println("No common prefix string amongst an array of strings.");
+		else System.out.println("common prefix string amongst an array of strings is '"+result+"'");
 	}
 
-	private static int find_missing_number(int[] array) {
+	private static String find_comman_prefiix(List<String> list) {
 		// TODO Auto-generated method stub
-		//for sorted
-//		for(int i=0;i<array.length;i++) {
-//			if(array[i]!=i+1)return i+1;
-//		}		
-//		return 100;
+		if(list.size()==0) return "Empty String add exception.";
+		if(list.size()==1) return list.get(0).substring(0,list.get(0).length());
 		
-		
-		//for unsorted Array
+		int matchedIndex =0;
 		int count=0;
-		for(int i=1;i<=100;i++) {count=0;
-			for(int j=0;j<array.length;j++) {
-				if(i==array[j]) {count++;break;}
-			}if(count==0)return i;
+		for(int i=0;i<list.get(0).length();i++) {count=0;
+			for(int j=1;j<list.size();j++) {
+				try{if(list.get(j).charAt(i)==list.get(0).charAt(i))count++;}catch(StringIndexOutOfBoundsException e){break;}			
+			}if(count==list.size()-1)matchedIndex++;
+			else break;
 		}
-		return -1;
+		if(matchedIndex>0)return list.get(0).substring(0,matchedIndex);
+		else return "";
 	}
 
 }
