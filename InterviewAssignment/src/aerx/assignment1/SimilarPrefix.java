@@ -1,5 +1,5 @@
-/*	Write a function to find the longest common prefix string amongst an array of strings.
-
+/*	ASSIGNMENT 1:
+  	Write a function to find the longest common prefix string amongst an array of strings.
 	return an empty string("") in case there is no common prefix.
 
 	Function: String Find_Common_Prefix(List<String> String_List)
@@ -51,14 +51,15 @@ public class SimilarPrefix {
         String[] array = list.toArray(new String[noOfStrings]);	
         
 		String firstString = array[0];
-		byte matchedIndex =0;
+		short matchedIndex =0;
 		boolean count=true;
 		short firstStringLength= (short) firstString.length();	
 		
 		for(byte i=0;i<firstStringLength;i++) {
 			for(byte j=1;j<noOfStrings;j++) {
 				try{if(array[j].charAt(i)!=firstString.charAt(i)) {count=false;break;}}
-				catch(StringIndexOutOfBoundsException e){count = false;break;}//if one string is shorter than other then it is break condition
+				catch(StringIndexOutOfBoundsException e){count = false;break;}
+				//if one string is shorter than other then it is break condition
 			}if(count)matchedIndex++;
 			else break;
 		}

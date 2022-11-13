@@ -1,3 +1,19 @@
+/*	ASSIGNMENT 2:
+	In an integer array of size 99, numbers are stored ranging from 1-100 with no
+	repetition and array is not sorted. So the numbers range is 1-100 and size of the array
+	is 99 which means the array will not have a number in given range. Find that missing
+	number.
+	
+	Function int Find_Missing_Number(int arrayIn[])
+	
+	CONDITION: Do not sort the array
+	
+	e.g: arrayIn = {1,2,3,4,6,.......100}
+	return value = 5
+	
+	NOTE: For simplicity, the example contains a sorted array. The solution provided by the candidate should be able to handle an unsorted array.
+ */
+
 package aerx.assignment2;
 
 public class ArrayOfNumbers {
