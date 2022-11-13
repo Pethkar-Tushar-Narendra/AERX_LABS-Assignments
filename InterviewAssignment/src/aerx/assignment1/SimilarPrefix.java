@@ -1,3 +1,16 @@
+/*	Write a function to find the longest common prefix string amongst an array of strings.
+
+	return an empty string("") in case there is no common prefix.
+
+	Function: String Find_Common_Prefix(List<String> String_List)
+
+	e.g: String_List = {"suyash" "sukesh" "sumit" "sunil" "suresh"};
+	return: "su"
+
+	e.g: String_List = {"mahesh" "saqlain" "labeeb" "shashank" "nazif"};
+	return: ""
+ */
+
 package aerx.assignment1;
 
 import java.util.ArrayList;
@@ -13,7 +26,6 @@ public class SimilarPrefix {
 		list.add("sumit");
 		list.add("sunil");
 		list.add("suresh");
-		list.add("suyash");
 		SimilarPrefix similarPrefix = new SimilarPrefix();
 		String result = similarPrefix.find_comman_prefiix(list);
 		if(result=="")System.out.println("No common prefix string amongst an array of strings.");
@@ -40,12 +52,12 @@ public class SimilarPrefix {
         
 		String firstString = array[0];
 		byte matchedIndex =0;
-		boolean count;
+		boolean count=true;
 		short firstStringLength= (short) firstString.length();	
 		
-		for(byte i=0;i<firstStringLength;i++) {count=true;
+		for(byte i=0;i<firstStringLength;i++) {
 			for(byte j=1;j<noOfStrings;j++) {
-				try{if(array[j].charAt(i)!=firstString.charAt(i)) {count=false;}}
+				try{if(array[j].charAt(i)!=firstString.charAt(i)) {count=false;break;}}
 				catch(StringIndexOutOfBoundsException e){count = false;break;}//if one string is shorter than other then it is break condition
 			}if(count)matchedIndex++;
 			else break;
